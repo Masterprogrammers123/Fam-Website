@@ -3,6 +3,5 @@
     padding: 10px;
 }
 #name {
-    padding: 10px;
-    text-align: center;
+    float: center;
 }
