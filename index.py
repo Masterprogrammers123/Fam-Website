@@ -15,7 +15,10 @@ def chat():
     return render_template("chat.html")
 @app.route('/TOS')
 def rules():
-    return render_template('Tos.html')    
+    return render_template('Tos.html') 
+@app.route('/Erorrtest')
+def erorr():
+    return 'Erorr easter egg. Do u like furries. I certainly do. And wumpus. I do to.'       
 
 if __name__ == "__main__":
     app.run(debug=True)                        
