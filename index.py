@@ -2,6 +2,9 @@ from Sockets.server import main_program
 from Sockets.client import main
 from flask import Flask, redirect, url_for, render_template, request, session, flash
 
+bad_words = ['fuck', 'shit', 'bitch', 'nigga', 'nigger', 'fucking', 'pute', 'putain', 'merde', 'fucker', 'ass', 'asshole', 'dick', 'pussy', 'imbecile', 'imbécile'] # So we can blur the swearing when we setup the chat with **** or something
+# We need to remember to put a .upper or .lower in the if statement that will check if there are any swear words
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -13,11 +16,15 @@ def home():
 @app.route("/chat")
 def chat():
     return render_template("chat.html")
-    
+
 @app.route("/TermsOfService")
 @app.route('/TOS')
 def rules():
-    return render_template('TOS.html')    
+    return render_template('TOS.html')
+
+@app.route('/<Erorrtest>')
+def erorr(Erorrtest):
+    return 'Erorr easter egg. Do u like furries. I certainly do. And wumpus. I do to.'       
 
 if __name__ == "__main__":
     app.run(debug=True)                        
