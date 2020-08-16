@@ -1,7 +1,6 @@
 from Sockets.server import main_program
 from Sockets.client import main
 from flask import Flask, redirect, url_for, render_template, request, session, flash
-from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
@@ -14,6 +13,9 @@ def home():
 @app.route("/chat")
 def chat():
     return render_template("chat.html")
+@app.route('/TOS')
+def rules():
+    return render_template('Tos.html')    
 
 if __name__ == "__main__":
     app.run(debug=True)                        
