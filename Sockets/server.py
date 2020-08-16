@@ -37,6 +37,7 @@ def main_program():
             thread = threading.Thread(target=handleClient, args=(conn, addr))
             thread.start()
             print(f"ACTIVE CONNECTIONS {threading.activeCount()- 1}")
+    start()
 
 if __name__ == "__main__":
     main_program()

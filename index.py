@@ -13,9 +13,11 @@ def home():
 @app.route("/chat")
 def chat():
     return render_template("chat.html")
+    
+@app.route("/TermsOfService")
 @app.route('/TOS')
 def rules():
-    return render_template('Tos.html')    
+    return render_template('TOS.html')    
 
 if __name__ == "__main__":
     app.run(debug=True)                        
