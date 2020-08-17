@@ -19,6 +19,8 @@ def chat():
 
 @app.route("/TermsOfService")
 @app.route('/TOS')
+@app.route("/tos")
+@app.route("/Tos")
 def rules():
     return render_template('TOS.html')
 

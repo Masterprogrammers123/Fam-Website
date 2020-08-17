@@ -1,8 +1,18 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 {% block content %}
-    <h1 id="h1ID">Name:</h1>
-    <form action="#" method="POST" id="name">
-        <input name="username" placeholder="Hi there! Name?">
-    </form>
+    <!--<h1 id="h1ID">Name:</h1> Prob to be deleted-->
+<form>
+  <div class="form-group">
+    <label for="exampleInputEmail1" id="name">Name:</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+  </div>
+  <div class="form-check">
+      <div style="padding-top: 5px; padding-bottom: 10px;">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label id="checkbox" class="form-check-label" for="exampleCheck1">I have read and agreed to the <a href="/TOS">Terms Of Service</a></label>
+      </div>
+  </div>
+  <button  type="submit" class="btn btn-primary">Submit</button>
+</form>
 {% endblock %}

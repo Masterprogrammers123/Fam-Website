@@ -1,10 +1,8 @@
 /* #000099 */
-/*
-.scrollbarclass {
-    overflow:scroll;
-    width:150px;
-    height:150px;
-    line-height:3em;
-    padding:5px;
+#scrollbarID {
+    width: 150px;
+    height: 150px;
+    line-height: 3em;
+    overflow: scroll;
+    padding: 5px;
 }
-*/
