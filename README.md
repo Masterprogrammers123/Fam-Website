@@ -1,2 +1,11 @@
 # Chat Fam-Website
-Tha flask website for our fam
+#### The flask website for our fam
+## Languages:
+* Python
+* JavaScript
+* HTML
+* CSS
+
+### Frameworks
+* Flask
+* Bootstrap
