@@ -6,6 +6,6 @@
 * HTML
 * CSS
 
-### Frameworks
+### Frameworks:
 * Flask
 * Bootstrap
