@@ -10,18 +10,19 @@
 {% endblock %}
 
 {% block content %}
+
 <div id="scrollbarID">
     <p>This 'div' element uses 'overflow:auto' to create scrollbars when needed.</p>
     <p>To be replaced by the actual chat.</p>
+    <form action="#" method="POST">
+        <div class="input-group mb-3" id="input-for-chat">
+            <input type="text" class="form-control" placeholder="Send a message" aria-label="Recipient's username"
+                aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="send()">Send</button>
+            </div>
+        </div>
+    </form>
 </div>
 
-<!--
-    <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Send a message" aria-label="Recipient's username"
-        aria-describedby="button-addon2">
-    <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="send()">Send</button>
-    </div>
-</div>
--->
 {% endblock %}
