@@ -30,7 +30,7 @@ def erorr(Erorrtest):
     return '<h1>Erorr easter egg.</h1> Do u like furries. I certainly do. And wumpus. I do to.'       
 
 """ # an approach of how we can blur the bad words
-msg = input("hi!")
+msg = input("hi!").lower()
 for bad_word in bad_words:
     msg = msg.replace(bad_word, "*"*len(bad_word))
 print(msg)
