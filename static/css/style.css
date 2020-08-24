@@ -1,7 +1,37 @@
-#name {
-    text-align: center;
-}
 
 #h1ID {
     text-align: center;
+}
+
+form#signupform {
+    padding: 10px;
+    height: 390px;
+    width: 425px;
+    border-style: solid;
+    position: absolute;
+    top: 50%;
+    border-radius: 5%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    border-color: #e6e6e6;
+    background-color: #e6e6e6;
+}
+
+form#loginform {
+    padding: 10px;
+    height: 350px;
+    width: 425px;
+    border-style: solid;
+    position: absolute;
+    top: 50%;
+    border-radius: 5%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    border-color: #e6e6e6;
+    background-color: #e6e6e6;
+}
+form#loginform label#loginpass{
+    padding-top: 5px;
 }
