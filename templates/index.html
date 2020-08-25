@@ -1,16 +1,39 @@
 {% extends "base.html" %}
 {% block title %}Login{% endblock %}
 {% block content %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for msg in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {{ msg }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 <form action="#" method="POST" id="loginform">
   <div style="padding:15px">
       <div class="form-group">
         <label for="exampleInputEmail1">Email</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <input name="loginemail" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
         <label for="exampleInputEmail1" id="loginpass">Password</label>
-        <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        <input name="loginpass" type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
           placeholder="Enter password">
       </div>
     <button  type="submit" class="btn btn-primary">Submit</button>
   </div>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item" href="/signup">New around here? Sign up</a>
+  </div>
 </form>
+<!--
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+-->
 {% endblock %}
