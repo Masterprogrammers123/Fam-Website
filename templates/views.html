@@ -1,9 +1,0 @@
-{% extends "base.html" %}
-{% block title %} Views {% endblock %}
-{% block content %}
-<ul>
-    {% for item in values %}
-        <li>Name: {{ item.name }} Email: {{ item.email }} Password: {{ item.password }}</li>
-    {% endfor %}
-</ul>
-{% endblock %}

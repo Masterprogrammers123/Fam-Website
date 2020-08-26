@@ -17,14 +17,30 @@ db = SQLAlchemy(app)
 
 class users(db.Model):
     _id = db.Column("id", db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
-    email = db.Column(db.String(100))
-    password = db.Column(db.String(100))
+    name = db.Column(db.String(999999999))
+    email = db.Column(db.String(999999999))
+    password = db.Column(db.String(999999999))
+    
     def __init__(self, name, email, password):
         self.name = name
         self.email = email
         self.password = password
 
+
+@app.route("/signup", methods=["GET", "POST"])
+def signup():
+    if request.method == "POST":
+        signup_name = request.form["Name"]
+        email = request.form["Email"]
+        password = request.form["Password"]
+        usr = users(signup_name, email, password)
+        db.session.add(usr)
+        db.session.commit()
+        flash("Signed up.")
+        return redirect(url_for('home'))
+    return render_template("signup.html") 
+
+signup_name = None
 @app.route("/", methods=["GET", "POST"])
 @app.route("/home", methods=["GET", "POST"])
 @app.route("/login", methods=["GET", "POST"])
@@ -34,46 +50,37 @@ def home():
         login_email = request.form["loginemail"]
         login_pass = request.form["loginpass"]
         login_user = login_email + ' ' + login_pass
-
-        found_user = users.query.filter_by(email=login_email, password=login_pass).first()
-        if found_user:
-            session["user"] = login_user
-            flash("Logged In.")
-            return redirect(url_for("chat"))
-        else:
-            flash("Account non existant.")
-            return redirect(url_for("signup"))
+        if login_email not in ["", " "] and login_pass not in ["", " "]:
+            found_user = users.query.filter_by(email=login_email, password=login_pass).first()
+            if found_user:
+                session["user"] = login_user
+                global login_name
+                login_name = signup_name
+                flash("Logged In.")
+                return redirect(url_for("chat"))
+            else:
+                flash("Wrong username/password")
+                return redirect(url_for("signup"))
     else:
        if "user" in session:
             flash("Already Logged in!")
             return redirect(url_for("chat"))
     return render_template("index.html")
 
+signup_name = None
+
 @app.route("/logout")
 def logout():
     flash("You have been logged out.")
     session.pop("user", None)
-    return redirect(url_for("login"))
+    return redirect(url_for("home"))
 
-@app.route("/views") # TODO: Delete this (IMPORTANT)
-def view():
-    return render_template("views.html", values=users.query.all())
-
-
-@app.route("/signup", methods=["GET", "POST"])
-def signup():
-    if request.method == "POST":
-        name = request.form["Name"]
-        email = request.form["Email"]
-        password = request.form["Password"]
-        usr = users(name, email, password)
-        db.session.add(usr)
-        db.session.commit()
-    return render_template("signup.html") 
-
-@app.route('/main')
-@app.route("/chat")
+@app.route('/main', methods=["GET", "POST"])
+@app.route("/chat", methods=["GET", "POST"])
 def chat():
+    if 'user' not in session:
+        flash("Not logged in.")
+        return redirect(url_for("home"))
     return render_template("chat.html")
 
 @app.route("/TermsOfService")
@@ -96,5 +103,5 @@ print(msg)
 
 if __name__ == "__main__":
     db.create_all()
-    app.run(debug=True)
+    app.run(host="0.0.0.0", debug=True) # host for repl.it (To be changed)
     
