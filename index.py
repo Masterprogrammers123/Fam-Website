@@ -1,12 +1,12 @@
 from Sockets.server import main_program
 from Sockets.client import main
 from flask import Flask, redirect, url_for, render_template, request, session, flash
+from time import sleep
 from flask_sqlalchemy import SQLAlchemy
 
 from datetime import timedelta
 
 bad_words = ["sex", 'balls','fuck', 'shit', 'bitch', 'nigga', 'nigger', 'fucking', 'pute', 'putain', 'merde', 'fucker', 'ass', 'asshole', 'dick', 'pussy', 'imbecile', 'imbécile'] # So we can blur the swearing when we setup the chat with **** or something
-# We need to remember to put a .upper or .lower in the if statement that will check if there are any swear words
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
@@ -18,9 +18,9 @@ db = SQLAlchemy(app)
 
 class users(db.Model):
     _id = db.Column("id", db.Integer, primary_key=True)
-    name = db.Column(db.String(999999999))
-    email = db.Column(db.String(999999999))
-    password = db.Column(db.String(999999999))
+    name = db.Column(db.String(100))
+    email = db.Column(db.String(100))
+    password = db.Column(db.String(100))
     
     def __init__(self, name, email, password):
         self.name = name
@@ -37,6 +37,7 @@ def signup():
         usr = users(signup_name, email, password)
         db.session.add(usr)
         db.session.commit()
+        sleep(10)
         flash("Signed up.")
         return redirect(url_for('home'))
     return render_template("signup.html") 
@@ -51,17 +52,14 @@ def home():
         login_email = request.form["loginemail"]
         login_pass = request.form["loginpass"]
         login_user = login_email + ' ' + login_pass
-        if login_email not in ["", " "] and login_pass not in ["", " "]:
-            found_user = users.query.filter_by(email=login_email, password=login_pass).first()
-            if found_user:
-                session["user"] = login_user
-                global login_name
-                login_name = signup_name
-                flash("Logged In.")
-                return redirect(url_for("chat"))
-            else:
-                flash("Wrong username/password")
-                return redirect(url_for("signup"))
+        found_user = users.query.filter_by(email=login_email, password=login_pass).first()
+        if found_user:
+            session["user"] = login_user
+            flash("Logged In.")
+            return redirect(url_for("chat"))
+        else:
+            flash("Wrong username/password")
+            return redirect(url_for("home"))
     else:
        if "user" in session:
             flash("Already Logged in!")
