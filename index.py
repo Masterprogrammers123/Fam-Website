@@ -26,7 +26,16 @@ class users(db.Model):
         self.name = name
         self.email = email
         self.password = password
-
+    
+class messages(db.Model):
+    _id = db.Column("id", db.Integer, primary_key=True)
+    message = db.Column(db.String(5000))
+    day_sent = db.Column(db.String(10))
+    time_sent = db.Column(db.String(5)) # Has to be a String because 23:59 isint an integer
+    def __init__(self, message, day_sent, time_sent):
+        self.message = message
+        self.day_sent = day_sent
+        self.time_sent = time_sent
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
@@ -78,8 +87,8 @@ def logout():
         flash("Not logged in")
         return redirect(url_for("home"))
 
-@app.route('/main')
-@app.route("/chat")
+@app.route('/main', methods=["GET", 'POST'])
+@app.route("/chat", methods=["GET", 'POST'])
 def chat():
     if 'user' not in session:
         flash("Not logged in.")
