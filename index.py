@@ -2,6 +2,7 @@ from Sockets.server import main_program
 from Sockets.client import main
 from flask import Flask, redirect, url_for, render_template, request, session, flash
 from flask_sqlalchemy import SQLAlchemy
+
 from datetime import timedelta
 
 bad_words = ["sex", 'balls','fuck', 'shit', 'bitch', 'nigga', 'nigger', 'fucking', 'pute', 'putain', 'merde', 'fucker', 'ass', 'asshole', 'dick', 'pussy', 'imbecile', 'imbécile'] # So we can blur the swearing when we setup the chat with **** or something
@@ -71,12 +72,16 @@ signup_name = None
 
 @app.route("/logout")
 def logout():
-    flash("You have been logged out.")
-    session.pop("user", None)
-    return redirect(url_for("home"))
+    if 'user' in session:
+        flash("You have been logged out.")
+        session.pop("user", None)
+        return redirect(url_for("home"))
+    else:
+        flash("Not logged in")
+        return redirect(url_for("home"))
 
-@app.route('/main', methods=["GET", "POST"])
-@app.route("/chat", methods=["GET", "POST"])
+@app.route('/main')
+@app.route("/chat")
 def chat():
     if 'user' not in session:
         flash("Not logged in.")
@@ -93,6 +98,9 @@ def rules():
 @app.route('/Erorrtest')
 def erorr(Erorrtest):
     return '<h1>Erorr easter egg.</h1> Do u like furries. I certainly do. And wumpus. I do to.'       
+
+def stuff():
+    print('stuff')
 
 """ # an approach of how we can blur the bad words
 msg = input("hi!").lower()

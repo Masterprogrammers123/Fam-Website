@@ -3,7 +3,6 @@ div#scrollbarID {
     height: 535px;
     width: 800px;
     line-height: 3em;
-    overflow: auto;
     border-style: solid;
     border-color: #e6e6e6;
     background-color: #e6e6e6;
@@ -16,11 +15,12 @@ div#scrollbarID {
     transform: translate(-50%, -50%);
 }
 
-div#scrollbarID form div#input-for-chat{
+div#scrollbarID2 {
+    height: 460px;
     width: 750px;
-    padding-top: 325px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    position: fixed;
+    overflow: auto;
+}
+
+div#scrollbarID3 {
+    width: 750px;
 }

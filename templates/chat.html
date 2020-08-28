@@ -8,20 +8,22 @@
 {% block jsfile %}
 <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
 {% endblock %}
-
 {% block content %}
 <div id="scrollbarID">
+    <div id="scrollbarID2">
     <p>This 'div' element uses 'overflow:auto' to create scrollbars when needed.</p>
     <p>To be replaced by the actual chat.</p>
-    <form action="#" method="POST">
-        <div class="input-group mb-3" id="input-for-chat">
-            <input type="text" class="form-control" placeholder="Send a message" aria-label="Recipient's username"
-                aria-describedby="button-addon2">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="send()">Send</button>
+    </div>
+    <div id="scrollbarID3">
+        <form action="#" method="POST">
+            <div class="input-group mb-3" id="input-for-chat">
+                <input type="text" class="form-control" placeholder="Send a message" aria-label="Recipient's username"
+                    aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outine-secondary" type="button" id="button-addon2">Send</button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
-
 {% endblock %}
