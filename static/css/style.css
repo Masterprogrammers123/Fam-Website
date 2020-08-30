@@ -1,11 +1,10 @@
-
 #h1ID {
     text-align: center;
 }
 
 form#signupform {
     padding: 10px;
-    height: 400px;
+    height: 450px;
     width: 450px;
     border-style: solid;
     position: absolute;
@@ -32,6 +31,7 @@ form#loginform {
     border-color: #e6e6e6;
     background-color: #e6e6e6;
 }
+
 form#loginform label#loginpass{
     padding-top: 5px;
 }
