@@ -61,7 +61,7 @@ def signup():
                 return redirect(url_for("signup"))
                 break
             elif len(value) > 100:
-                flash(f"{value} cant be more then 100 chars")
+                flash(f"{value} hello:) Humm u cannot make it more than 100 chars. Thank u.")
                 return redirect(url_for("signup"))
                 break
         db.session.add(usr)
@@ -127,6 +127,9 @@ def rules():
 @app.route('/Erorrtest')
 def erorr(Erorrtest):
     return '<h1>Erorr easter egg.</h1> Do u like furries. I certainly do. And wumpus. I do to.'
+@app.route('/Snake')
+def snake()
+    return 'the snake has eaten u. U are dead. '
 
 
 """ # an approach of how we can blur the bad words
