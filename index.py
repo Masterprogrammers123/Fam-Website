@@ -2,6 +2,7 @@ from Sockets.server import main_program
 from Sockets.client import main
 from flask import Flask, redirect, url_for, render_template, request, session, flash
 from time import sleep
+import json
 from flask_sqlalchemy import SQLAlchemy
 
 from datetime import timedelta
@@ -9,7 +10,7 @@ from datetime import timedelta
 bad_words = [
     "sex", 'balls', 'fuck', 'shit', 'bitch', 'nigga', 'nigger', 'fucking',
     'pute', 'putain', 'merde', 'fucker', 'ass', 'asshole', 'dick', 'pussy',
-    'imbecile', 'imbécile', 
+    'imbecile', 'imbécile', 'porn'
 ]  # So we can blur the swearing when we setup the chat with **** or something
 
 app = Flask(__name__)
@@ -47,6 +48,8 @@ class messages(db.Model):
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
+        is_checked = request.args.get("isChecked")
+        print(is_checked)
         Name = request.form["Name"]
         Email = request.form["Email"]
         Password = request.form["Password"]
@@ -66,6 +69,7 @@ def signup():
         flash("Signed up.")
         return redirect(url_for('home'))
     return render_template("signup.html")
+
 
 @app.route("/", methods=["GET", "POST"])
 @app.route("/home", methods=["GET", "POST"])
