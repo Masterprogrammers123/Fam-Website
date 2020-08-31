@@ -17,10 +17,11 @@ div#scrollbarID {
 
 div#scrollbarID2 {
     height: 460px;
-    width: 750px;
+    width: 775px;
     overflow: auto;
 }
 
 div#scrollbarID3 {
-    width: 750px;
+    padding-top: 10px;
+    width: 775px;
 }

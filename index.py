@@ -8,7 +8,7 @@ from datetime import timedelta
 bad_words = [
     "sex", 'balls', 'fuck', 'shit', 'bitch', 'nigga', 'nigger', 'fucking',
     'pute', 'putain', 'merde', 'fucker', 'ass', 'asshole', 'dick', 'pussy',
-    'imbecile', 'imbécile', 'porn'
+    'imbecile', 'imbécile', 'porn', "pornstar"
 ]  # So we can blur the swearing when we setup the chat with **** or something
 
 app = Flask(__name__)
@@ -61,6 +61,11 @@ def signup():
         flash("Signed up.")
         return redirect(url_for('home'))
     return render_template("signup.html")
+
+@app.route("/handle_sockets")
+def handle_sockets():
+    print("{SERVER} Handling sockets...")
+    return " "
 
 
 @app.route("/", methods=["GET", "POST"])
