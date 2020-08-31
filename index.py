@@ -105,6 +105,8 @@ def chat():
     if 'user' not in session:
         flash("Not logged in.")
         return redirect(url_for("home"))
+    main_program()
+    main()
     return render_template("chat.html")
 
 
