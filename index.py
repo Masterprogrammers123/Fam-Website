@@ -1,8 +1,6 @@
 from Sockets.server import main_program
 from Sockets.client import main
 from flask import Flask, redirect, url_for, render_template, request, session, flash
-from time import sleep
-import json
 from flask_sqlalchemy import SQLAlchemy
 
 from datetime import timedelta
@@ -48,20 +46,14 @@ class messages(db.Model):
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
-        is_checked = request.args.get("isChecked")
-        print(is_checked)
         Name = request.form["Name"]
         Email = request.form["Email"]
         Password = request.form["Password"]
         usr = users(Name, Email, Password)
         acc = [Name, Email, Password]
         for value in acc:
-            if len(value) == 0 or " "*len(value) == value:
-                flash(f"{value} cant be blank")
-                return redirect(url_for("signup"))
-                break
-            elif len(value) > 100:
-                flash(f"{value} hello:) Humm u cannot make it more than 100 chars. Thank u.")
+            if len(value) > 100:
+                flash(f"Hi there! Name/Email/Password cant have more then 100 chararacters. Thanks!")
                 return redirect(url_for("signup"))
                 break
         db.session.add(usr)
@@ -127,8 +119,9 @@ def rules():
 @app.route('/Erorrtest')
 def erorr(Erorrtest):
     return '<h1>Erorr easter egg.</h1> Do u like furries. I certainly do. And wumpus. I do to.'
+    
 @app.route('/Snake')
-def snake()
+def snake():
     return 'the snake has eaten u. U are dead. '
 
 

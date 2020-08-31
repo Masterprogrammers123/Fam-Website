@@ -4,7 +4,7 @@ def main_program():
     # Will change most of the ADDR stuff
     HEADER = 64
     PORT = 5050
-    SERVER = socket.gethostbyname(socket.gethostname()) # Will change this soon to public IP
+    SERVER = socket.gethostname()
     ADDR = (SERVER, PORT)
     FORMAT = "utf-8"
     DISCONNECT_MESSAGE = "!EXIT"

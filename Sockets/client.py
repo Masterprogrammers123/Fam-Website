@@ -5,7 +5,7 @@ def main():
     PORT = 5050
     FORMAT = "utf-8"
     DISCONNECT_MESSAGE = "!EXIT"
-    SERVER = "169.254.149.184"
+    SERVER = "209.226.119.104"
     ADDR = (SERVER, PORT)
 
 
