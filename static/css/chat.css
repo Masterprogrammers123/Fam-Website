@@ -13,6 +13,7 @@ div#scrollbarID {
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 div#scrollbarID2 {

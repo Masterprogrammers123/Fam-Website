@@ -15,6 +15,7 @@ form#signupform {
     transform: translate(-50%, -50%);
     border-color: #e6e6e6;
     background-color: #e6e6e6;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 form#loginform {
@@ -30,6 +31,7 @@ form#loginform {
     transform: translate(-50%, -50%);
     border-color: #e6e6e6;
     background-color: #e6e6e6;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 form#loginform label#loginpass{
